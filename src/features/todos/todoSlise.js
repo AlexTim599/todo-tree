@@ -14,7 +14,7 @@ export const getTodos = createAsyncThunk(
     'todos/getTodos',
     async (_, { rejectWithValue, dispatch }) => {
         const result = await axios.get('https://api.github.com/gists/e1702c1ef26cddd006da989aa47d4f62')
-        console.log(result.data.files, 'result');
+        // console.log(result.data.files, 'result');
         dispatch(setTodos(buildTree(JSON.parse(result.data.files['view.json'].content).entityLabelPages[0])))
 
     }
@@ -63,11 +63,11 @@ export const todoSlice = createSlice({
         }
 
     },
-    extraReducers: {
-        [getTodos.fulfilled]: () => console.log('fulfilled'),
-        [getTodos.pending]: () => console.log('pending'),
-        [getTodos.rejected]: () => console.log('rejected'),
-    }
+    // extraReducers: {
+    //     [getTodos.fulfilled]: () => console.log('fulfilled'),
+    //     [getTodos.pending]: () => console.log('pending'),
+    //     [getTodos.rejected]: () => console.log('rejected'),
+    // }
 })
 
 
